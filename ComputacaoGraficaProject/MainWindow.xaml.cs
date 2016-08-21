@@ -153,7 +153,7 @@ namespace ComputacaoGraficaProject
 
         private void CircunferenciaPontoMedio_Click(object sender, RoutedEventArgs e)
         {
-            if (validacaoImagem() && raioCircunferencia != null)
+            if (validacaoImagem() && raioCircunferencia.Text.Equals(null))
             {
                 Circunferencia c = new Circunferencia();
                 c.methodPontoMedio(int.Parse(raioCircunferencia.Text));
@@ -167,7 +167,7 @@ namespace ComputacaoGraficaProject
 
         private void circunferenciaEquacaoExplicita_Click(object sender, RoutedEventArgs e)
         {
-            if (validacaoImagem() && raioCircunferencia.Text != null)
+            if (validacaoImagem() && raioCircunferencia.Text.Equals(null))
             {
                 Circunferencia c = new Circunferencia();
                 c.methodEquacaoExplicita(int.Parse(raioCircunferencia.Text));
@@ -181,7 +181,7 @@ namespace ComputacaoGraficaProject
 
         private void circunferenciaTrigonometrico_Click(object sender, RoutedEventArgs e)
         {
-            if (validacaoImagem() && raioCircunferencia.Text != null)
+            if (validacaoImagem() && raioCircunferencia.Text.Equals(null))
             {
                 Circunferencia c = new Circunferencia();
                 c.methodTrigonometrico(int.Parse(raioCircunferencia.Text));
