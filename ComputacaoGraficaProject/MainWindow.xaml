@@ -19,9 +19,9 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="80"/>
-                            <RowDefinition/>
-                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="154"/>
+                            <RowDefinition Height="113"/>
+                            <RowDefinition Height="155"/>
                         </Grid.RowDefinitions>
                         <GroupBox Header="Desenhar Retas" Margin="0" VerticalAlignment="Bottom" Height="300" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}">
                             <Grid Margin="0">
@@ -39,10 +39,10 @@
                                         </GridView>
                                     </ListView.View>
                                 </ListView>
-                                <Button x:Name="adicionarReta" Content="Adicionar Ponto" Margin="10,63.96,10,0" VerticalAlignment="Top" Click="adicionarCoordenadaReta_Click"/>
+                                <Button x:Name="adicionarReta" Content="Adicionar Ponto" Margin="10,46,10,0" VerticalAlignment="Top" Click="adicionarCoordenadaReta_Click"/>
                             </Grid>
                         </GroupBox>
-                        <GroupBox Header="Desenhar Circunferência" Margin="0,0,0,15" Grid.Row="1" VerticalAlignment="Bottom" Height="150" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Grid.RowSpan="2">
+                        <GroupBox Header="Desenhar Circunferência" Margin="0,1,0,0" Grid.Row="2" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Height="150" VerticalAlignment="Top">
                             <Grid Margin="0">
                                 <Label Content="Raio: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22.893,7.04,0,0"/>
                                 <TextBox x:Name="raioCircunferencia" Height="23" Margin="67,10,21,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" UndoLimit="3"/>
@@ -51,14 +51,27 @@
                                 <Button x:Name="circunferenciaTrigonometrico" Content="Método Trigonométrico" HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top" Width="188" Click="circunferenciaTrigonometrico_Click"/>
                             </Grid>
                         </GroupBox>
-                        <Button Content="Limpar Tela" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="150" Click="limparTela_Click" Margin="32,10,38,21"/>
-                        <GroupBox x:Name="groupBox1" Header="Posição do Cursor" Margin="0" Grid.Row="4" VerticalAlignment="Bottom" Height="140" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}">
-                            <Grid>
-                                <Label x:Name="pontoNormalizacao" Content="Normalização: " HorizontalAlignment="Center" Margin="10,47.633,10,0" Width="188" FontSize="9.333" VerticalAlignment="Top"/>
-                                <Label x:Name="pontoCoordenadaDispositivo" Content="Coordenada do Dispositivo: " HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10,0,10,19.58" Width="188" FontSize="9.333"/>
-                                <Label x:Name="pontoCoordenadaMundo" Content="Coordenada de Mundo: " Margin="10,20.219,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" FontSize="9.333"/>
+                        <GroupBox x:Name="groupBox1" Header="Posição do Cursor" Grid.Row="4" VerticalAlignment="Bottom" Height="109" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" Margin="0,0,0,45">
+                            <Grid Margin="0,0,0,13">
+                                <Label x:Name="pontoNormalizacao" Content="Normalização: " HorizontalAlignment="Center" Margin="10,37,10,0" Width="188" FontSize="9.333" VerticalAlignment="Top"/>
+                                <Label x:Name="pontoCoordenadaDispositivo" Content="Coordenada do Dispositivo: " HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10,0,10,-7" Width="188" FontSize="9.333"/>
+                                <Label x:Name="pontoCoordenadaMundo" Content="Coordenada de Mundo: " Margin="10,15,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" FontSize="9.333"/>
                             </Grid>
                         </GroupBox>
+                        <Grid Margin="0,151,0,8" Grid.Row="2" Grid.RowSpan="2">
+                            <GroupBox x:Name="groupBox2" Header="DesenharElipse" HorizontalAlignment="Left" VerticalAlignment="Top" Height="100" Width="220" BorderBrush="#FF6A6F72">
+                                <Grid Margin="0,0,0,-4">
+                                    <Button x:Name="btn_DesenharElipse" Content="Desenhar Elipse" HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top" Width="188" Click="btn_DesenharElipse_Click"/>
+                                    <Label x:Name="label" Content="A:" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="a_elipse" HorizontalAlignment="Left" Height="23" Margin="35,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="50"/>
+                                    <Label x:Name="label1" Content="B:" HorizontalAlignment="Left" Margin="111,13,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.456,0.09"/>
+                                    <TextBox x:Name="b_elipse" HorizontalAlignment="Left" Height="23" Margin="135,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="50"/>
+
+                                </Grid>
+                            </GroupBox>
+
+                        </Grid>
+
                     </Grid>
                     <Grid Margin="0" Grid.Column="1">
                         <Grid.Background>
@@ -82,6 +95,7 @@
                         </Grid>
                         <Grid Margin="0" Grid.Row="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
                             <Label x:Name="resolucaoTela" Content="Resolução da Tela: 0x0" HorizontalAlignment="Right" Margin="0" d:LayoutOverrides="Height"/>
+                            <Button Content="Limpar Tela" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Click="limparTela_Click" Margin="225,10,203,20"/>
                         </Grid>
                     </Grid>
                     <Grid Grid.Column="2" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
@@ -98,16 +112,18 @@
                             <Grid Margin="0">
                                 <Button x:Name="tTransladar" Content="Transladar" Margin="0" VerticalAlignment="Bottom" Click="bTransformacao_Click"/>
                                 <Label Content="X: " Margin="15,12.96,0,31.08" RenderTransformOrigin="1.632,1.582" HorizontalAlignment="Left" Width="33.546" HorizontalContentAlignment="Center"/>
-                                <TextBox x:Name="X_Translacao" Margin="48.546,12.96,0,31.08" TextWrapping="Wrap" Width="40" HorizontalAlignment="Left" UndoLimit="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                <TextBox x:Name="X_Translacao" Margin="49,13,0,31" TextWrapping="Wrap" Width="50" HorizontalAlignment="Left" UndoLimit="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                                 <Label Content="Y: " Margin="0,12.96,64,31.08" RenderTransformOrigin="1.632,1.582" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Width="35"/>
-                                <TextBox x:Name="Y_Translacao" Margin="144,12.96,24,31.08" TextWrapping="Wrap" Width="40" UndoLimit="3" RenderTransformOrigin="0.51,0.483" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                <TextBox x:Name="Y_Translacao" Margin="144,13,16,31" TextWrapping="Wrap" UndoLimit="3" RenderTransformOrigin="0.51,0.483" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                             </Grid>
                         </GroupBox>
                         <GroupBox Header="Escala" VerticalAlignment="Top" Height="90" Grid.Row="2" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}">
                             <Grid Margin="0">
-                                <Label Content="Ampliação: " HorizontalAlignment="Left" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment" Margin="19.666,10,0,0"/>
-                                <TextBox x:Name="ampliacaoEscala" TextWrapping="Wrap" Margin="96.283,10,35.262,31.08" TextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                <Label Content="X: " HorizontalAlignment="Left" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment" Margin="19.666,10,0,0"/>
+                                <TextBox x:Name="X_escala" TextWrapping="Wrap" Margin="48,11,110,31" TextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                                 <Button x:Name="tEscalonar" Content="Escalonar" Margin="0" d:LayoutOverrides="Height" VerticalAlignment="Bottom" Click="bTransformacao_Click"/>
+                                <Label x:Name="label2" Content="Y:" HorizontalAlignment="Left" Margin="116,11,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="Y_escala" TextWrapping="Wrap" HorizontalAlignment="Left" Height="27" Margin="140,10,0,31"  TextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="50"/>
                             </Grid>
                         </GroupBox>
                         <GroupBox Header="Rotação" VerticalAlignment="Top" Height="90" Grid.Row="3" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}">
@@ -127,9 +143,9 @@
                         <GroupBox Header="Cisalhamento" VerticalAlignment="Top" Height="90" Grid.Row="6" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}">
                             <Grid Margin="0">
                                 <Label Content="X: " Margin="10,12,162,30" RenderTransformOrigin="1.632,1.582" HorizontalAlignment="Center" Width="36" HorizontalContentAlignment="Center" VerticalAlignment="Center" Height="26"/>
-                                <TextBox x:Name="Y_Cisalhamento" Margin="144,12,24,30" TextWrapping="Wrap" Width="40" HorizontalAlignment="Center" UndoLimit="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="26" VerticalAlignment="Center"/>
+                                <TextBox x:Name="Y_Cisalhamento" Margin="144,12,16,30" TextWrapping="Wrap" Width="48" HorizontalAlignment="Center" UndoLimit="3"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="26"/>
                                 <Label Content="Y: " Margin="0,12,69,30" RenderTransformOrigin="1.632,1.582" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Width="35" VerticalAlignment="Center" Height="26"/>
-                                <TextBox x:Name="X_Cisalhamento" Margin="51,12,117,30" TextWrapping="Wrap" Width="40" UndoLimit="3" RenderTransformOrigin="0.51,0.483" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                <TextBox x:Name="X_Cisalhamento" Margin="51,12,109,30" TextWrapping="Wrap" UndoLimit="3" RenderTransformOrigin="0.51,0.483" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                                 <Button x:Name="tCisalhar" Content="Cisalhar" Margin="0" VerticalAlignment="Bottom" Click="bTransformacao_Click"/>
                             </Grid>
                         </GroupBox>

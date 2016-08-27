@@ -30,7 +30,7 @@ namespace ComputacaoGraficaProject.Sintese
             transformacoes.Add(matrizTranslacao);
         }
 
-        public void method_Escala(double ampliacao)
+        public void method_Escala(double x_escala, double y_escala)
         {
             double translacaoX = Referencias.listaRetas[0][0];
             double translacaoY = Referencias.listaRetas[0][1];
@@ -39,8 +39,8 @@ namespace ComputacaoGraficaProject.Sintese
 
             // Matriz do Escala
             List<double[]> matrizEscala = new List<double[]>();
-            matrizEscala.Add(new double[] { ampliacao, 0, 0});
-            matrizEscala.Add(new double[] { 0, ampliacao, 0});
+            matrizEscala.Add(new double[] { x_escala, 0, 0});
+            matrizEscala.Add(new double[] { 0, y_escala, 0});
             matrizEscala.Add(new double[] { 0, 0, 1});
 
             transformacoes.Add(matrizEscala);
@@ -202,7 +202,7 @@ namespace ComputacaoGraficaProject.Sintese
                 }
                 else if (transformacoes[i][0] == 2)
                 {
-                    method_Escala(transformacoes[i][1]);
+                    method_Escala(transformacoes[i][1], transformacoes[i][2]);
                 }
                 else if (transformacoes[i][0] == 3)
                 {

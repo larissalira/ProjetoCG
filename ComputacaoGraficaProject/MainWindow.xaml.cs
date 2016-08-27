@@ -98,12 +98,7 @@ namespace ComputacaoGraficaProject
             return true;
         }
 
-        private void limparTela_Click(object sender, EventArgs e)
-        {
-            imagemIniciada = false;
-            validacaoImagem();
-            apagarCamposSintese();
-        }
+      
 
         private void imagemDraw_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -147,6 +142,15 @@ namespace ComputacaoGraficaProject
 
                 listViewRetas.Items.Add(new Functions.ObjectReta { X = e.GetPosition(imagemLabel).X + "", Y = e.GetPosition(imagemLabel).Y + "" });
             }*/
+        }
+
+        /* -----------------  BOTAO DE LIMPAR A TELA ----------------------------------------- */
+        private void limparTela_Click(object sender, EventArgs e)
+        {
+            imagemIniciada = false;
+            validacaoImagem();
+            apagarCamposSintese();
+            Referencias.listaRetas.Clear();
         }
 
         /* ----------------- INÍCIO: PARTE DE DESENHO DA CIRCUNFERÊNCIA ------------------------ */
@@ -194,6 +198,27 @@ namespace ComputacaoGraficaProject
 
 
         /* ----------------- FINAL: PARTE DE DESENHO DA CIRCUNFERÊNCIA ------------------------- */
+
+        /* ----------------- INICIO: PARTE DE DESENHO DA ELIPSE -------------------------------- */
+        private void btn_DesenharElipse_Click(object sender, RoutedEventArgs e)
+        {
+            if(validacaoImagem() && !a_elipse.Text.Equals("") && !b_elipse.Text.Equals(""))
+            {
+                Circunferencia c = new Circunferencia();
+                c.methodElipse(int.Parse(a_elipse.Text), int.Parse(b_elipse.Text));
+            }
+            else
+            {
+                MessageBox.Show("Preencha o A e B para desenhar a elipse.");
+            }
+
+
+        }
+
+
+
+
+        /* ----------------- FINAL: PARTE DE DESENHO DA ELIPSE ------------------------------- -*/
 
         /* ------------------- INÍCIO: PARTE DE DESENHO DA RETA ------------------------------- */
 
@@ -270,58 +295,59 @@ namespace ComputacaoGraficaProject
         // Evento que envia para a classe de transformação, o tipo de transformação escolhida pelo usuário.
         private void bTransformacao_Click(object sender, RoutedEventArgs e)
         {
-            Button button = sender as Button;
+            
+                Button button = sender as Button;
 
-            double[] info = null;
+                double[] info = null;
 
-            if (button == tTransladar)
-            {
-                info = new double[] { 1, Double.Parse(X_Translacao.Text), Double.Parse(Y_Translacao.Text) };
-                listViewTransformacoes.Items.Add(new Functions.ObjectTransformacao { Transformacao = "Transladar("+ Double.Parse(X_Translacao.Text)  + ", "+ Double.Parse(Y_Translacao.Text) + ")" });
-            }
-            else if (button == tEscalonar)
-            {
-                info = new double[] { 2, Double.Parse(ampliacaoEscala.Text) };
-                listViewTransformacoes.Items.Add(new Functions.ObjectTransformacao { Transformacao = "Escalonar(" + ampliacaoEscala.Text + ")" });
-            }
-            else if (button == tRotacionar)
-            {
-                info = new double[] { 3, Double.Parse(anguloRotacao.Text) };
-                listViewTransformacoes.Items.Add(new Functions.ObjectTransformacao { Transformacao = "Rotacionar(" + anguloRotacao.Text + ")" });
-            }
-            else if (button == tRefletir_1)
-            {
-                info = new double[] { 4, 1 };
-                listViewTransformacoes.Items.Add(new Functions.ObjectTransformacao { Transformacao = "Refletir em X" });
-            }
-            else if (button == tRefletir_2)
-            {
-                info = new double[] { 4, 2 };
-                listViewTransformacoes.Items.Add(new Functions.ObjectTransformacao { Transformacao = "Refletir em Y" });
-            }
-            else if (button == tRefletir_3)
-            {
-                info = new double[] { 4, 3 };
-                listViewTransformacoes.Items.Add(new Functions.ObjectTransformacao { Transformacao = "Refletir em X e Y" });
-            }
-            else if (button == tCisalhar)
-            {
-                info = new double[] { 5, Double.Parse(X_Cisalhamento.Text), Double.Parse(Y_Cisalhamento.Text) };
-                listViewTransformacoes.Items.Add(new Functions.ObjectTransformacao { Transformacao = "Cisalhar(" + X_Cisalhamento.Text + ", " + Y_Cisalhamento.Text + ")" });
-            }
+                if (button == tTransladar)
+                {
+                    info = new double[] { 1, Double.Parse(X_Translacao.Text), Double.Parse(Y_Translacao.Text) };
+                    listViewTransformacoes.Items.Add(new Functions.ObjectTransformacao { Transformacao = "Transladar(" + Double.Parse(X_Translacao.Text) + ", " + Double.Parse(Y_Translacao.Text) + ")" });
+                }
+                else if (button == tEscalonar)
+                {
+                    info = new double[] { 2, Double.Parse(X_escala.Text), Double.Parse(Y_escala.Text) };
+                    listViewTransformacoes.Items.Add(new Functions.ObjectTransformacao { Transformacao = "Escalonar(" + X_escala.Text + "," + Y_escala.Text + ")" });
+                }
+                else if (button == tRotacionar)
+                {
+                    info = new double[] { 3, Double.Parse(anguloRotacao.Text) };
+                    listViewTransformacoes.Items.Add(new Functions.ObjectTransformacao { Transformacao = "Rotacionar(" + anguloRotacao.Text + ")" });
+                }
+                else if (button == tRefletir_1)
+                {
+                    info = new double[] { 4, 1 };
+                    listViewTransformacoes.Items.Add(new Functions.ObjectTransformacao { Transformacao = "Refletir em X" });
+                }
+                else if (button == tRefletir_2)
+                {
+                    info = new double[] { 4, 2 };
+                    listViewTransformacoes.Items.Add(new Functions.ObjectTransformacao { Transformacao = "Refletir em Y" });
+                }
+                else if (button == tRefletir_3)
+                {
+                    info = new double[] { 4, 3 };
+                    listViewTransformacoes.Items.Add(new Functions.ObjectTransformacao { Transformacao = "Refletir em X e Y" });
+                }
+                else if (button == tCisalhar)
+                {
+                    info = new double[] { 5, Double.Parse(X_Cisalhamento.Text), Double.Parse(Y_Cisalhamento.Text) };
+                    listViewTransformacoes.Items.Add(new Functions.ObjectTransformacao { Transformacao = "Cisalhar(" + X_Cisalhamento.Text + ", " + Y_Cisalhamento.Text + ")" });
+                }
 
-            listaTransformacoes.Insert(0,info);
-        }
-
+                listaTransformacoes.Insert(0, info);
+            
+          
+         }
       
-
+         /* Cria um quadrado */
         private void btn_inserirQuadrado_Click(object sender, RoutedEventArgs e)
         {
             imagemIniciada = false;
             validacaoImagem();
             apagarCamposSintese();
 
-            /* Teste - Cria um quadrado */
             Referencias.listaRetas.Add(new double[] { 0, 0 });
             Referencias.listaRetas.Add(new double[] { 0, 50 });
             Referencias.listaRetas.Add(new double[] { 50, 50 });
@@ -331,8 +357,7 @@ namespace ComputacaoGraficaProject
             retas.desenharRetas_PontoMedio(Referencias.listaRetas);
         }
 
-       
-
+     
 
         /* ------------------- FINAL: PARTE DE TRANSFORMAÇÕES ------------------------------- */
 
